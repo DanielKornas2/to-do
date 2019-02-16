@@ -4,7 +4,6 @@ import TaskList from './components/TaskList/TaskList';
 import './App.css';
 
 class App extends Component {
-
   state = {
     tasks: [
       {
@@ -60,10 +59,28 @@ class App extends Component {
 
   }
 
+  addNewTask = (text,important,date) => {
+    const newItem = {
+      id: this.state.tasks.length,
+      text: text,
+      date: date,
+      important: important,
+      active: true,
+      finishDate: null
+    }
+
+    const newState = [...this.state.tasks];
+    newState.push(newItem);
+    
+    this.setState({
+      tasks: newState
+    })
+  }
+
   render() {
     return (
       <div className="App">
-          <NewTask />
+          <NewTask addNewTask={this.addNewTask} />
           <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} changeTaskStatus ={this.changeTaskStatus} />
       </div>
     );
