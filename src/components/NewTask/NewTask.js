@@ -29,7 +29,12 @@ class NewTask extends Component {
     handleClick = (e) => {
         e.preventDefault();
         const {text, important, date} = this.state;
-        this.props.addNewTask(text,important,date);
+        if (text.length > 0){
+            this.props.addNewTask(text,important,date);
+        } else {
+            alert ("Task text can't be empty!")
+        }
+        
         this.setState({
             text: '',
             important: false,
