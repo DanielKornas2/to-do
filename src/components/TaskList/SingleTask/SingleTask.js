@@ -1,13 +1,13 @@
 import React from 'react';
 
 const SingleTask = (props) => {
-    const { text, date } = props.task;
+    const { text, date, id } = props.task;
     return ( 
         <div>
             <p>
                 <strong>{text}</strong> - till <span>{date} </span>
-                <button>Done</button>
-                <button>X</button>
+                <button onClick={() => props.changeTaskStatus(id)} >Done</button>
+                <button onClick={() => props.deleteTask(id)}>X</button>
             </p>    
         </div>
      );

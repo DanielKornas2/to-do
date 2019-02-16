@@ -8,7 +8,7 @@ class App extends Component {
   state = {
     tasks: [
       {
-        id: 111111111,
+        id: 0,
         text: 'Task txt1',
         date: '2018-11-11',
         important: true,
@@ -16,29 +16,44 @@ class App extends Component {
         finishDate: null
       },
       {
-        id: 2,
-        text: '222222222',
+        id: 1,
+        text: '1111111',
         date: '2019-02-20',
         important: true,
         active: true,
         finishDate: null
       },
       {
-        id: 3,
-        text: '333333333333',
+        id: 2,
+        text: '22222222',
         date: '2019-01-22',
         important: false,
         active: true,
         finishDate: null
-      },
-      
+      }
     ]
   }
+
+  changeTaskStatus = (id) => {
+    console.log('change status' + id);
+  }
+
+  deleteTask = (id) => {
+ 
+    const newTasks = [...this.state.tasks];
+    const index = newTasks.findIndex(task => task.id === id);
+    newTasks.splice(index,1);
+    this.setState({
+      tasks: newTasks
+    })
+    
+  }
+
   render() {
     return (
       <div className="App">
           <NewTask />
-          <TaskList tasks={this.state.tasks} />
+          <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask} changeTaskStatus ={this.changeTaskStatus} />
       </div>
     );
   }
