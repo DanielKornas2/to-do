@@ -1,8 +1,15 @@
 import React from 'react';
 
-const SingleTask = () => {
+const SingleTask = (props) => {
+    const { text, date } = props.task;
     return ( 
-        <div>Single task</div>
+        <div>
+            <p>
+                <strong>{text}</strong> - till <span>{date} </span>
+                <button>Done</button>
+                <button>X</button>
+            </p>    
+        </div>
      );
 }
  
