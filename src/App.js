@@ -35,7 +35,18 @@ class App extends Component {
   }
 
   changeTaskStatus = (id) => {
-    console.log('change status' + id);
+    const newTasks = [...this.state.tasks];
+    newTasks.forEach(
+      task => {
+        if (task.id === id){
+          task.active = false;
+          task.finishDate = new Date().getTime();
+        }
+      }
+    )
+    this.setState({
+      tasks: newTasks
+    })
   }
 
   deleteTask = (id) => {
@@ -46,7 +57,7 @@ class App extends Component {
     this.setState({
       tasks: newTasks
     })
-    
+
   }
 
   render() {
